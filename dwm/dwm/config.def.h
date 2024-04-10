@@ -24,7 +24,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "Web", "term", "Music", "VM", "code", "audio" };
+static const char *tags[] = { "Web", "term", "Music", "VM", "code", "audio", "drm", "dev", "pass" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -64,6 +64,15 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *default_browser[] = { "firefox", NULL };
+static const char *screenshoot[] = { "flameshot", NULL };
+static const char *audio_editor[] = { "audacity", NULL };
+static const char *Volume_Control[] = { "pavucontrol", NULL };
+static const char *VM_Man[] = { "virt-manager", NULL }; 
+static const char *code_editor[] = { "code", NULL };
+static const char *video_editor[] = { "shotcut", NULL }; 
+static const char *file_man[] = { "thunar", NULL }; 
+
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -100,6 +109,21 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_b, spawn,               {.v = default_browser } },
+	{ MODKEY,             XK_s, spawn,                         {.v = screenshoot } },
+	{ MODKEY,             XK_a, spawn,          {.v = audio_editor } },
+	{ MODKEY|ShiftMask,             XK_a, spawn,          {.v = Volume_Control } },
+	{ MODKEY,             XK_v, spawn,          {.v = VM_Man } },
+	{ MODKEY,             XK_c, spawn,          {.v = code_editor  } },
+	{ MODKEY|ShiftMask,             XK_v, spawn,          {.v = video_editor } },
+	{ MODKEY|ShiftMask,             XK_f, spawn,          {.v = file_man } },
+
+	
+
+
+
+
+
 };
 
 /* button definitions */
